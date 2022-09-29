@@ -5,6 +5,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { RegisterComponent } from './users-components/register/register.component';
 import {HttpClientModule} from "@angular/common/http";
 import {UsersService} from "./users-services/users.service";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {UsersService} from "./users-services/users.service";
   imports: [
     CommonModule,
     UsersRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     UsersService

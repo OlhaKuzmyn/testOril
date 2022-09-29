@@ -1,1 +1,14 @@
-<p>register works!</p>
+<form [formGroup]="form">
+  <div><label>Name<input type="text" formControlName="name"></label></div>
+  <div><label>Username<input type="text" formControlName="username"></label></div>
+  <div><label>Email<input type="text" formControlName="email"></label></div>
+  <div><label>Phone<input type="text" formControlName="phone"></label></div>
+  <div>
+    Address:
+    <div><label>Street<input type="text" formControlName="street"></label></div>
+    <div><label>Suite<input type="text" formControlName="suite"></label></div>
+    <div><label>City<input type="text" formControlName="city"></label></div>
+    <div><label>Zipcode<input type="text" formControlName="zipcode"></label></div>
+  </div>
+  <button>Register</button>
+</form>
