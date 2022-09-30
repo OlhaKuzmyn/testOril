@@ -24,17 +24,8 @@ export class TodosService {
     return this.httpClient.post<ITodo>(urls.todos, todo)
   }
   update(id:number, todo:ITodo): Observable<ITodo> {
-    // try {
-      return this.httpClient.put<ITodo>(`${urls.todos}/id`, todo)
-        // .pipe(catchError(this.errorHandler))
-    // } catch (e) {
-    //   console.log(e);
-    // }
+    return this.httpClient.put<ITodo>(`${urls.todos}/id`, todo)
   }
-
-  // errorHandler(error: HttpErrorResponse): void {
-  //   console.log(error);
-  // }
 
   delete(id:number): Observable<void> {
     return this.httpClient.delete<void>(`${urls.todos}/id`)
