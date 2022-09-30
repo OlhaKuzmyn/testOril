@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../../users-services/users.service";
 import {Router} from "@angular/router";
+import {RegEx} from "../../../constants/regex";
 
 @Component({
   selector: 'app-register',
@@ -21,14 +22,14 @@ export class RegisterComponent implements OnInit {
 
   _createForm():void {
     this.form = new FormGroup({
-      name: new FormControl(null),
-      username: new FormControl(null),
-      email: new FormControl(null),
-      phone: new FormControl(null),
-      street: new FormControl(null),
-      suite: new FormControl(null),
-      city: new FormControl(null),
-      zipcode: new FormControl(null)
+      name: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
+      username: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
+      email: new FormControl(null, [Validators.pattern(RegEx.email)]),
+      phone: new FormControl(null, [Validators.pattern(RegEx.phone)]),
+      street: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
+      suite: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
+      city: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
+      zipcode: new FormControl(null, [Validators.pattern(RegEx.zipcode)])
 
     })
   }

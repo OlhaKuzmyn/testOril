@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ITodo} from "../../../interfaces/todos.interface";
 import {TodosService} from "../../todos-services/todos.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DataService} from "../../todos-services/data.service";
 import {IUser} from "../../../interfaces/user.interface";
 
@@ -42,7 +42,7 @@ export class TodosComponent implements OnInit {
   _createForm():void {
     this.form = new FormGroup({
       userId: new FormControl(null),
-      title: new FormControl(null),
+      title: new FormControl(null,[Validators.minLength(2), Validators.maxLength(50)]),
       completed: new FormControl(false)
     })
   }
@@ -55,10 +55,13 @@ export class TodosComponent implements OnInit {
     }
     // console.log('check', todo);
     if (this.todoForUpdate){
-      this.todosService.update(this.todoForUpdate!.id!, newTodo).subscribe(response => {
-        console.log(response);
-        this.todos = this.todos.map(todo => todo.id === this.todoForUpdate!.id! ? newTodo : todo)
-      })
+      this.todosService.update(this.todoForUpdate!.id!, newTodo).subscribe(() => {
+        // console.log(response);
+      },
+        () => {
+          this.todos = this.todos.map(todo => todo.id === this.todoForUpdate!.id! ? newTodo : todo)
+        }
+        )
     } else {
       this.todosService.create(newTodo).subscribe(()=>{
         newTodo = {id: this.todos.length+1, ...newTodo}

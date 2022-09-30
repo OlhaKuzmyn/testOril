@@ -4,7 +4,7 @@
   </select></label></div>
   <div><label>Title<input type="text" formControlName="title"></label></div>
   <div><label>Completed<input type="checkbox" formControlName="completed" ></label></div>
-  <button (click)="saveTodo()">Save ToDo</button>
+  <button (click)="saveTodo()">{{!todoForUpdate ? 'Add Todo' : 'Update Tdo'}}</button>
 </form>
 <hr/>
 <app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>

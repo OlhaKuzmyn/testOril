@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {catchError, Observable} from "rxjs";
 import {ITodo} from "../../interfaces/todos.interface";
 import {urls} from "../../constants/urls";
 import {IUser} from "../../interfaces/user.interface";
@@ -24,8 +24,17 @@ export class TodosService {
     return this.httpClient.post<ITodo>(urls.todos, todo)
   }
   update(id:number, todo:ITodo): Observable<ITodo> {
-    return this.httpClient.put<ITodo>(`${urls.todos}/id`, todo)
+    // try {
+      return this.httpClient.put<ITodo>(`${urls.todos}/id`, todo)
+        // .pipe(catchError(this.errorHandler))
+    // } catch (e) {
+    //   console.log(e);
+    // }
   }
+
+  // errorHandler(error: HttpErrorResponse): void {
+  //   console.log(error);
+  // }
 
   delete(id:number): Observable<void> {
     return this.httpClient.delete<void>(`${urls.todos}/id`)
