@@ -12,24 +12,15 @@ import {DataService} from "../../todos-services/data.service";
 export class TodoComponent implements OnInit {
   form: FormGroup
   todoForUpdate: ITodo | null
-  t = [...Array(11).keys()]
 
   @Input()
   todo: ITodo
   constructor(private todosService:TodosService, private dataService:DataService) {
-    this._createForm()
   }
 
   ngOnInit(): void {
   }
 
-  _createForm():void {
-    this.form = new FormGroup({
-      userId: new FormControl(null),
-      title: new FormControl(null),
-      completed: new FormControl(false)
-    })
-  }
 
   upd(todo: ITodo): void {
     this.todoForUpdate = todo
