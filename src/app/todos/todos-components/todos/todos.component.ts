@@ -48,15 +48,12 @@ export class TodosComponent implements OnInit {
   }
 
   saveTodo() {
-    // console.log(this.form.value);
     let newTodo = this.form.getRawValue();
     if (newTodo.completed === null) {
       newTodo.completed = false
     }
-    // console.log('check', todo);
     if (this.todoForUpdate){
       this.todosService.update(this.todoForUpdate!.id!, newTodo).subscribe(() => {
-        // console.log(response);
       },
         () => {
           this.todos = this.todos.map(todo => todo.id === this.todoForUpdate!.id! ? newTodo : todo)
@@ -67,7 +64,6 @@ export class TodosComponent implements OnInit {
     } else {
       this.todosService.create(newTodo).subscribe(()=>{
         newTodo = {id: this.todos.length+1, ...newTodo}
-        // console.log(todo)
         this.form.reset()
         this.todos.push(newTodo)
       })
