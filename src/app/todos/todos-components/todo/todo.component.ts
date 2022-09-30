@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ITodo} from "../../../interfaces/todos.interface";
 import {FormControl, FormGroup} from "@angular/forms";
 import {TodosService} from "../../todos-services/todos.service";
+import {DataService} from "../../todos-services/data.service";
 
 @Component({
   selector: 'app-todo',
@@ -15,7 +16,7 @@ export class TodoComponent implements OnInit {
 
   @Input()
   todo: ITodo
-  constructor(private todosService:TodosService) {
+  constructor(private todosService:TodosService, private dataService:DataService) {
     this._createForm()
   }
 
@@ -32,21 +33,22 @@ export class TodoComponent implements OnInit {
 
   upd(todo: ITodo): void {
     this.todoForUpdate = todo
-    this.form.setValue({userId: todo.userId, title: todo.title, completed: todo.completed})
+    this.dataService.updTodo.next(todo)
   }
 
-  del(id: number) {
-    this.todosService.delete(id).subscribe(() => {
-
-    })
+  del(id: number, todo:ITodo) {
+    if (confirm(`Are you sure you want to delete this todo with title: ${todo.title}`)) {
+      this.dataService.delTodo.next(todo)
+    }
   }
 
-  updTodo() {
-    let todo = this.form.getRawValue();
-    this.todosService.update(this.todoForUpdate!.id!, this.form.value).subscribe(value => {
-      this.form.reset()
-    })
-  }
+  // updTodo() {
+  //   let todo = this.form.getRawValue();
+  //   this.todosService.update(this.todoForUpdate!.id!, this.form.value).subscribe(value => {
+  //     // state.users = state.users.map(user => user.id === action.payload.user_id ? action.payload.updUser : user)
+  //     this.form.reset()
+  //   })
+  // }
 
 }
 

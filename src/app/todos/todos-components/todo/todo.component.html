@@ -12,17 +12,17 @@
 </p>
 
 <button (click)="upd(todo)">Update</button>
-<button (click)="del(todo.id!)">Delete</button>
+<button (click)="del(todo.id!, todo)">Delete</button>
 
 
 
-<form [formGroup]="form">
-  <div><label>Select User ID <select formControlName="userId">
-    <option *ngFor="let i of t" [ngValue]="i">{{i}}</option>
-  </select></label></div>
-  <div><label>Title<input type="text" formControlName="title"></label></div>
-  <div><label>Completed<input type="checkbox" [value]="false" formControlName="completed"></label></div>
-  <button (click)="updTodo()">Update ToDo</button>
-</form>
+<!--<form [formGroup]="form">-->
+<!--  <div><label>Select User ID <select formControlName="userId">-->
+<!--    <option *ngFor="let i of t" [ngValue]="i">{{i}}</option>-->
+<!--  </select></label></div>-->
+<!--  <div><label>Title<input type="text" formControlName="title"></label></div>-->
+<!--  <div><label>Completed<input type="checkbox" [value]="false" formControlName="completed"></label></div>-->
+<!--  <button (click)="updTodo()">Update ToDo</button>-->
+<!--</form>-->
 
 <hr/>
