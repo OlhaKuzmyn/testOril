@@ -41,8 +41,8 @@ export class TodosComponent implements OnInit {
 
   _createForm():void {
     this.form = new FormGroup({
-      userId: new FormControl(null),
-      title: new FormControl(null,[Validators.minLength(2), Validators.maxLength(50)]),
+      userId: new FormControl(null, [Validators.required]),
+      title: new FormControl(null,[Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
       completed: new FormControl(false)
     })
   }
@@ -60,6 +60,8 @@ export class TodosComponent implements OnInit {
       },
         () => {
           this.todos = this.todos.map(todo => todo.id === this.todoForUpdate!.id! ? newTodo : todo)
+          this.form.reset()
+          this.todoForUpdate = null
         }
         )
     } else {

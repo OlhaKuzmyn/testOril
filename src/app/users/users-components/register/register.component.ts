@@ -22,14 +22,14 @@ export class RegisterComponent implements OnInit {
 
   _createForm():void {
     this.form = new FormGroup({
-      name: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
-      username: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
-      email: new FormControl(null, [Validators.pattern(RegEx.email)]),
-      phone: new FormControl(null, [Validators.pattern(RegEx.phone)]),
-      street: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
-      suite: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
-      city: new FormControl(null, [Validators.minLength(2), Validators.maxLength(20)]),
-      zipcode: new FormControl(null, [Validators.pattern(RegEx.zipcode)])
+      name: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      username: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      email: new FormControl(null, [Validators.required, Validators.pattern(RegEx.email)]),
+      phone: new FormControl(null, [Validators.required, Validators.pattern(RegEx.phone)]),
+      street: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      suite: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      city: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      zipcode: new FormControl(null, [Validators.required, Validators.pattern(RegEx.zipcode)])
 
     })
   }
