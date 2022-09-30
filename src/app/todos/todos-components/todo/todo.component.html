@@ -1,28 +1,19 @@
-<p>
-  ID: {{todo.id}}
-</p>
-<p>
-  User ID: {{todo.userId}}
-</p>
-<p>
-  Title: {{todo.title}}
-</p>
-<p>
-  Completed: {{todo.completed}}
-</p>
+<div class="todo">
+  <p>
+    ID: {{todo.id}}
+  </p>
+  <p>
+    User ID: {{todo.userId}}
+  </p>
+  <p>
+    Title: {{todo.title}}
+  </p>
+  <p>
+    Completed: {{todo.completed}}
+  </p>
 
-<button (click)="upd(todo)">Update</button>
-<button (click)="del(todo.id!, todo)">Delete</button>
+  <button (click)="upd(todo)">Update</button>
+  <button (click)="del(todo.id!, todo)">Delete</button>
 
-
-
-<!--<form [formGroup]="form">-->
-<!--  <div><label>Select User ID <select formControlName="userId">-->
-<!--    <option *ngFor="let i of t" [ngValue]="i">{{i}}</option>-->
-<!--  </select></label></div>-->
-<!--  <div><label>Title<input type="text" formControlName="title"></label></div>-->
-<!--  <div><label>Completed<input type="checkbox" [value]="false" formControlName="completed"></label></div>-->
-<!--  <button (click)="updTodo()">Update ToDo</button>-->
-<!--</form>-->
-
-<hr/>
+<!--  <hr/>-->
+</div>

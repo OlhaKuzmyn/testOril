@@ -42,13 +42,6 @@ export class TodoComponent implements OnInit {
     }
   }
 
-  // updTodo() {
-  //   let todo = this.form.getRawValue();
-  //   this.todosService.update(this.todoForUpdate!.id!, this.form.value).subscribe(value => {
-  //     // state.users = state.users.map(user => user.id === action.payload.user_id ? action.payload.updUser : user)
-  //     this.form.reset()
-  //   })
-  // }
 
 }
 

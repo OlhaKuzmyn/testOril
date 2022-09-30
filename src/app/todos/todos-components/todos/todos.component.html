@@ -1,10 +1,15 @@
-<form [formGroup]="form">
-  <div><label>Select User ID <select formControlName="userId">
-    <option *ngFor="let user of users" [ngValue]="user.id">{{user.id}}</option>
-  </select></label></div>
-  <div><label>Title<input type="text" formControlName="title"></label></div>
-  <div><label>Completed<input type="checkbox" formControlName="completed" ></label></div>
-  <button (click)="saveTodo()" [disabled]="form.invalid">{{!todoForUpdate ? 'Add Todo' : 'Update Todo'}}</button>
-</form>
+<div>
+  Add Todo
+  <form [formGroup]="form">
+    <div><label>Select User ID <select formControlName="userId">
+      <option *ngFor="let user of users" [ngValue]="user.id">{{user.id}}</option>
+    </select></label></div>
+    <div><label>Title<input type="text" formControlName="title"></label></div>
+    <div><label>Completed<input type="checkbox" formControlName="completed" ></label></div>
+    <button (click)="saveTodo()" [disabled]="form.invalid">{{!todoForUpdate ? 'Add Todo' : 'Update Todo'}}</button>
+  </form>
+</div>
 <hr/>
-<app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>
+<div class="container">
+  <app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>
+</div>
