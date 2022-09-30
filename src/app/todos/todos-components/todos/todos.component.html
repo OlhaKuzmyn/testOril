@@ -1,1 +1,10 @@
-<p>todos works!</p>
+<form [formGroup]="form">
+  <div><label>Select User ID <select formControlName="userId">
+    <option *ngFor="let i of t" [ngValue]="i">{{i}}</option>
+  </select></label></div>
+  <div><label>Title<input type="text" formControlName="title"></label></div>
+  <div><label>Completed<input type="checkbox" formControlName="completed" ></label></div>
+  <button (click)="addTodo()">Add ToDo</button>
+</form>
+<hr/>
+<app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>

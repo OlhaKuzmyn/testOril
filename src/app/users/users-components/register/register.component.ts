@@ -34,7 +34,16 @@ export class RegisterComponent implements OnInit {
   }
 
   signUp(): void {
-
+    const formValue = this.form.getRawValue();
+    const address = {street: formValue.street, suite: formValue.suite, city: formValue.city, zipcode: formValue.zipcode};
+    delete formValue.street;
+    delete formValue.suite;
+    delete formValue.city;
+    delete formValue.zipcode;
+    const user = {...formValue, address: address};
+    this.usersService.signUp(user).subscribe(()=>{
+      this.router.navigate(['todos']).then()
+    })
   }
 
 }
